@@ -56,10 +56,12 @@ public class Movie {
 
     public String toString() {
         String result;
-        result = title + ", ";
-        result += genre + ", ";
+        result = title + ", Genre: ";
+        result += genre + ", Have you seen it: ";
         if(haveSeen) {
-            result += "yes, " + rating + "/10\n";
+            result += "yes, Rating: " + rating + "/10\n";
+        } else {
+            result += "no, Rating: No rating.";
         }
         return result;
 

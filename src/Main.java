@@ -5,16 +5,15 @@ public class Main {
 
     public static void main(String[] args) {
 
-    public void main(String[] args) {
-
         Scanner in = new Scanner(System.in);
         System.out.print("Welcome to your movie library. What would you like to do?\n");
-        System.out.print("(Options: 'Search', 'Add Movie', 'Edit Movie')");
-        String inputOption = in.nextLine();
-        boolean valid = false;
 
-        inputOption.toLowerCase();
-        while(!valid) {
+        while (true) {
+            System.out.print("(Options: 'Search', 'Add Movie', 'Edit Movie', 'Exit')\n");
+            String inputOption = in.nextLine();
+            boolean valid = false;
+
+            inputOption.toLowerCase();
             if (inputOption.equals("add movie")) {
                 valid = true;
                 addMovie();
@@ -24,16 +23,19 @@ public class Main {
             } else if (inputOption.equals("edit movie")) {
                 valid = true;
                 editMovie();
+            } else if ( inputOption.equals("exit")) {
+                break;
             } else {
                 System.out.print("Please enter a valid option.");
             }
+
         }
     }
 
     public static void addMovie() {
         Scanner in = new Scanner(System.in);
         // get the title of the movie
-        System.out.print("What movie do you want to add? ");
+        System.out.print("What movie do you want to add? \n");
         String title = in.next();
 
         // get the genre of the movie
@@ -48,7 +50,6 @@ public class Main {
 
         // if they've seen the movie, get the rating, else -1
         if (watchedAnswer.startsWith("y")) {
-            haveWatched = true;
 
             System.out.println("Alright, now what do you want to rate it out of 10?");
             rating = in.next();
@@ -67,7 +68,8 @@ public class Main {
 
         Movie movie = new Movie(information);
 
-        System.out.println("Movie added.");
+        System.out.println("Movie added: " + movie.toString() + "\n");
+        System.out.println("What do you want to do next?");
     }
 
     public static void searchForMovie() {
@@ -80,8 +82,13 @@ public class Main {
     }
 
     public static void editMovie() {
-        System.out.println("What movie do you want to edit? ");
+        Scanner in = new Scanner(System.in);
+        System.out.println("What movie do you want to edit? \n");
+        String movie = in.next();
 
+        System.out.println("What part of the movie do you want to edit?\n");
+        System.out.print("(Options: 'Title', 'Genre', 'Have you seen this movie?', 'Rating')\n");
+        String option = in.nextLine();
 
 
     }
