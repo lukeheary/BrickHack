@@ -1,35 +1,53 @@
+import java.io.File;
+import java.io.IOException;
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
 public class Main {
 
     public static void main(String[] args) {
+        try {
 
-        Scanner in = new Scanner(System.in);
-        System.out.print("Welcome to your movie library. What would you like to do?\n");
+            File myFile = new File("moviefile.txt");
 
-        while (true) {
-            System.out.print("(Options: 'Search', 'Add Movie', 'Edit Movie', 'Exit')\n");
-            String inputOption = in.nextLine();
-            boolean valid = false;
+            if (myFile.createNewFile()){
+                System.out.println("File is created!\n");
 
-            inputOption.toLowerCase();
-            if (inputOption.equals("add movie")) {
-                valid = true;
-                addMovie();
-            } else if (inputOption.equals("search")) {
-                valid = true;
-                searchForMovie();
-            } else if (inputOption.equals("edit movie")) {
-                valid = true;
-                editMovie();
-            } else if ( inputOption.equals("exit")) {
-                break;
-            } else {
-                System.out.print("Please enter a valid option.");
+                Scanner in = new Scanner(System.in);
+                System.out.print("Welcome to your movie library. What would you " +
+                        "like to do?\n");
+
+                while (true) {
+                    System.out.print("(Options: 'Search', 'Add Movie', 'Edit Movie', 'Exit')\n");
+                    String inputOption = in.nextLine();
+                    boolean valid = false;
+
+                    inputOption.toLowerCase();
+                    if (inputOption.equals("add movie")) {
+                        valid = true;
+                        addMovie();
+                    } else if (inputOption.equals("search")) {
+                        valid = true;
+                        searchForMovie();
+                    } else if (inputOption.equals("edit movie")) {
+                        valid = true;
+                        editMovie();
+                    } else if ( inputOption.equals("exit")) {
+                        break;
+                    } else {
+                        System.out.print("Please enter a valid option.");
+                    }
+
+                }
+            }else{
+                System.out.println("File already exists.\n");
             }
 
+        } catch (IOException e) {
+            e.printStackTrace();
         }
+
+
     }
 
     public static void addMovie() {
