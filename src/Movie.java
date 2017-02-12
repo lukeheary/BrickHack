@@ -5,8 +5,6 @@
  *         Description:
  */
 
-
-
 public class Movie {
     /*
      * Title of the movie
