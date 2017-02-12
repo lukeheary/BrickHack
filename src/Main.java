@@ -1,11 +1,12 @@
-import java.io.File;
+package com.company;
 import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
 
 public class Main {
 
     public static void main(String[] args) {
 
-        File output = new File("movieList.txt");;
+    public void main(String[] args) {
 
         Scanner in = new Scanner(System.in);
         System.out.print("Welcome to your movie library. What would you like to do?\n");
@@ -48,6 +49,8 @@ public class Main {
 
         // if they've seen the movie, get the rating, else -1
         if (watchedAnswer.startsWith("y")) {
+            haveWatched = true;
+
             System.out.println("Alright, now what do you want to rate it out of 10?");
             rating = in.next();
         } else {

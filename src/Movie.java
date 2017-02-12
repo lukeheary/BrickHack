@@ -26,7 +26,7 @@ public class Movie {
     /*
      * rating of the movie
      */
-    private int rating;
+    private String rating;
 
 
     //TODO
@@ -50,9 +50,9 @@ public class Movie {
     public Movie(String[] information){
         this.title = information[0];
         this.genre = information[1];
-        if(Integer.parseInt(information[2]) == 1) {
+        if(information[2].matches("y")) {
             this.haveSeen = true;
-            this.rating = Integer.parseInt(information[3]);
+            this.rating = information[3];
         }
     }
 
